@@ -93,4 +93,42 @@ class ObserverTest {
         assertEquals(admin.data.toString(), member1.shallow_copy.toString());
         assertEquals(admin.data.toString(), "test");
     }
+
+    @Test
+    void memory_member() {
+        GroupAdmin admin = new GroupAdmin();
+
+        ConcreteMember member = new ConcreteMember();
+        admin.register(member);
+
+        System.out.print("ADMIN\n" + JvmUtilities.objectFootprint(admin));
+        System.out.print("MEMBER\n" + JvmUtilities.objectFootprint(member));
+
+        admin.append("test");
+
+        System.out.print("\nAPPENDED\n\n");
+
+        System.out.print("ADMIN\n" + JvmUtilities.objectFootprint(admin));
+        System.out.print("MEMBER\n" + JvmUtilities.objectFootprint(member));
+    }
+
+    @Test
+    void memory_admin() {
+        GroupAdmin admin = new GroupAdmin();
+
+        System.out.print("BASE\n" + JvmUtilities.objectFootprint(admin));
+
+        ConcreteMember member1 = new ConcreteMember();
+        ConcreteMember member2 = new ConcreteMember();
+        ConcreteMember member3 = new ConcreteMember();
+
+        admin.register(member1);
+        System.out.print("ADDED 1 MEMBER\n" + JvmUtilities.objectFootprint(admin));
+
+        admin.register(member2);
+        System.out.print("ADDED 2 MEMBERS\n" + JvmUtilities.objectFootprint(admin));
+
+        admin.register(member3);
+        System.out.print("ADDED 3 MEMBERS\n" + JvmUtilities.objectFootprint(admin));
+    }
 }
