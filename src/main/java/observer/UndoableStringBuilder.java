@@ -4,7 +4,7 @@ import java.util.Stack;
 import java.util.*;
 
 /**
- * A rework of StringBuilder that contains undo methods for the following methods: Append, Delete, Insert, Replace and Reverse
+ *  A rework of 'StringBuilder' that contains the undo method, which supports the following methods: Append, Delete, Insert, Replace and Reverse
  * @version 1.0 13 Nov 2022
  * @author Roy Harel (213055601) and Daniel Kuris (214539397)
  */
